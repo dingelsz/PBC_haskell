@@ -15,7 +15,7 @@ module Lambda where
 -- 2) Abstraction
 --    Abstraction is the term that refers to function definitions. In haskell
 --    you use the syntax
---      (\variable -> expression)
+--      \variable -> expression
 --    Using lambda calculus terminology, the expression is called a lambda term.
 --    Also, we say that the variable is bound in the expression.
 -- 3) Application
@@ -29,11 +29,13 @@ module Lambda where
 -- and lambda terms can be combined. 
 
 -- Example
--- Here is a basic function. 
-identity = (\x -> x)
+-- Here is a basic function.
+identity :: a -> a
+identity = \x -> x
 
 -- What else can we do? How about this
-constant = (\x -> (\y -> x))
+constant :: a -> b -> a
+constant = \x -> \y -> x
 
 -- We can combine functions. We are creating a function that returns another
 -- function. Notice that the variable bound in the outer function is available
@@ -55,10 +57,27 @@ constant' x y = y
 -- Church encoding is a technique for encoding data with functions. Let's start
 -- with the basics, true of false values.
 
-true  x y = x
-false x y = y
+true  = \x -> \y -> x
+false = \x -> \y -> y
 
+-- Boolean Algebra
+and' = \x -> \y -> x y false
 
+-- How this evaluates: first x is evaluated on y and false. If x is true
+-- then y will be chosen to evaluate the next arguments. if x is false
+-- then false will be selected. So, only if x is true and y is true will
+-- the result be true:
+-- Cases:
+--           y=true                       y=false
+-- | x=true  true  true false -> true  | true  false false -> false
+-- | x=false false true false -> false | false false false -> false
+--
+
+or' = \x -> \y -> x true y
+
+if' = \x -> \y -> x y true
+
+xor' = \x -> \y -> x
 
 
 
