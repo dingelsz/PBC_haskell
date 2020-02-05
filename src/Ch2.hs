@@ -1,3 +1,4 @@
+module Ch2 where 
 -- This is a comment
 
 doubleMe x = x + x

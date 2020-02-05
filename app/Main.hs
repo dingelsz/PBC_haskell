@@ -1,6 +1,10 @@
-module Main where
+module Main
+    ( someFunc,
+    main
+    ) where
 
-import Ch2
+someFunc :: IO ()
+someFunc = putStrLn "someFunc"
 
 main :: IO ()
-main = someFunc
+main = return ()

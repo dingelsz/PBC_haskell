@@ -1,5 +1,3 @@
-module Lisp where
-
 -- A basic lisp interpreter
 -- Zach Dingels
 -- 2-1-2020

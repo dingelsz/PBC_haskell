@@ -1,3 +1,4 @@
+module Types where
 -------------------------------------------------------------------------------
 -- CHATPER 3 START
 
@@ -51,12 +52,12 @@ yCoord :: Point -> Int
 yCoord (Point _ y) = y
 
 -- We can reduce this boilerplate by using Haskell's record syntax:
-data Vector` = Vector {
+data Vector' = Vector' {
   coords :: [Float]
   } deriving (Show)
 -- This automatically generates a coords accessor function
 -- We can use a different constructor syntax
-u = Vector {
+u = Vector' {
   coords = [1,2,3]
   }
   
